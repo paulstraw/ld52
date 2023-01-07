@@ -129,6 +129,8 @@ namespace LD52
       Vector3 directionToNextTarget = (nextTarget - transform.position).normalized;
       Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
 
+      CheckForRipeApple(directionToNextTarget);
+
       Vector3 newPos = transform.position + directionToNextTarget * speed * Time.deltaTime;
 
       float angle = Vector3.SignedAngle(Vector3.left, directionToNextTarget, Vector3.forward);
@@ -147,6 +149,12 @@ namespace LD52
       {
         currentBrainState = WormBrainState.HasDestination;
       }
+    }
+
+    void CheckForRipeApple(Vector3 currentDir)
+    {
+      var lookDir = Quaternion.AngleAxis(currentDir.x < 0 ? 45 : -45, Vector3.forward) * currentDir;
+      Debug.DrawRay(transform.position, lookDir, Color.magenta, 0.01f);
     }
   }
 }
