@@ -17,6 +17,9 @@ namespace LD52
     List<Sprite> growthStageSprites;
 
     [SerializeField]
+    Sprite chompedSprite;
+
+    [SerializeField]
     SpriteRenderer spriteRenderer;
 
     [SerializeField]
@@ -89,6 +92,7 @@ namespace LD52
       );
 
       gameObject.layer = initialLayer;
+      spriteRenderer.sprite = chompedSprite;
 
       return true;
     }

@@ -202,6 +202,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Apple_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006c0e9f6198342fbadb34621626f701
+      internalID: -778323248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -215,6 +236,7 @@ TextureImporter:
     nameFileIdTable:
       Apple_0: -961448763
       Apple_2: -1417016725
+      Apple_4: -778323248
       Apple_3: -811423561
       Apple_1: -1525733076
   spritePackingTag: 

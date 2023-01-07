@@ -138,6 +138,7 @@ MonoBehaviour:
   - {fileID: -1525733076, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
   - {fileID: -1417016725, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
   - {fileID: -811423561, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
+  chompedSprite: {fileID: -778323248, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
   spriteRenderer: {fileID: 8778964915203969358}
   rb: {fileID: 894620190267338859}
 --- !u!58 &8395029424821187399
