@@ -36,6 +36,9 @@ namespace LD52
     [SerializeField]
     SplineContainer splineContainer;
 
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
+
     Vector3 destination;
 
     Vector3 nextTarget;
@@ -124,13 +127,15 @@ namespace LD52
     void MoveTowardNextTarget()
     {
       Vector3 directionToNextTarget = (nextTarget - transform.position).normalized;
-      // Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
+      Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
 
       Vector3 newPos = transform.position + directionToNextTarget * speed * Time.deltaTime;
 
-      float angle = -Vector3.Angle(Vector3.left, directionToNextTarget);
-      // FIXME: Incorrect ~half the time
-      transform.rotation = Quaternion.Euler(0, 0, angle);
+      float angle = Vector3.SignedAngle(Vector3.left, directionToNextTarget, Vector3.forward);
+
+      spriteRenderer.flipX = true;
+      spriteRenderer.flipY = directionToNextTarget.x > 0;
+      spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, angle);
 
       transform.position = newPos;
 
