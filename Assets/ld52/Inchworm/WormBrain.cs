@@ -100,7 +100,7 @@ namespace LD52
       Vector3 newNextTarget = Vector3.zero;
       float bestMatchDistance = float.MaxValue;
 
-      Debug.DrawLine(transform.position, idealNextTarget, Color.red, 50.0f);
+      // Debug.DrawLine(transform.position, idealNextTarget, Color.red, 50.0f);
       Spline closestSpline = splineContainer.Splines[0];
       float closestSplinePointT = 0;
 
@@ -115,7 +115,7 @@ namespace LD52
 
       SplineUtility.EvaluateTangent(closestSpline, closestSplinePointT);
 
-      Debug.DrawLine(transform.position, newNextTarget, Color.magenta, 50.0f);
+      // Debug.DrawLine(transform.position, newNextTarget, Color.magenta, 50.0f);
 
       nextTarget = newNextTarget;
       currentBrainState = WormBrainState.HasNextTarget;
@@ -124,7 +124,7 @@ namespace LD52
     void MoveTowardNextTarget()
     {
       Vector3 directionToNextTarget = (nextTarget - transform.position).normalized;
-      Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
+      // Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
 
       Vector3 newPos = transform.position + directionToNextTarget * speed * Time.deltaTime;
 
