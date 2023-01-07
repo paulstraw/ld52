@@ -106,6 +106,12 @@ namespace LD52
         }
       }
 
+      // Don't revisit our last target, if it can be avoided
+      if (candidates.Count > 1)
+      {
+        candidates.Remove(targetSpline);
+      }
+
       targetSpline = candidates[UnityEngine.Random.Range(0, candidates.Count)];
 
       if (targetSpline == null)
