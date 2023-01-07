@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 712047694590066815}
   - component: {fileID: 712047694590066814}
   - component: {fileID: 7189473376131910796}
+  - component: {fileID: 3993035039454530738}
   m_Layer: 0
   m_Name: InchwormSprite
   m_TagString: Untagged
@@ -73,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 7
   m_Sprite: {fileID: 1427078544, guid: a5246fe164a254ff68a6a888ad5e2baf, type: 3}
-  m_Color: {r: 0.99034953, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,6 +106,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3993035039454530738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712047694590066812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83182a8cde3404cbfb3cc5c939eea907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &712047694828022466
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,3 +170,9 @@ MonoBehaviour:
   speed: 4
   splineContainer: {fileID: 0}
   spriteRenderer: {fileID: 712047694590066814}
+  ripeAppleLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  ripeAppleCheckDistance: 0.7
+  animator: {fileID: 7189473376131910796}
+  animationEventProxy: {fileID: 3993035039454530738}

@@ -39,6 +39,18 @@ namespace LD52
     [SerializeField]
     SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    LayerMask ripeAppleLayerMask;
+
+    [SerializeField]
+    float ripeAppleCheckDistance;
+
+    [SerializeField]
+    Animator animator;
+
+    [SerializeField]
+    InchwormAnimationEventProxy animationEventProxy;
+
     Vector3 destination;
 
     Vector3 nextTarget;
@@ -46,6 +58,18 @@ namespace LD52
     WormBrainState currentBrainState = WormBrainState.NeedsDestination;
 
     Spline targetSpline;
+
+    Apple targetChompApple;
+
+    void Start()
+    {
+      animationEventProxy.OnChompFinished += HandleChompFinished;
+    }
+
+    void OnDestroy()
+    {
+      animationEventProxy.OnChompFinished -= HandleChompFinished;
+    }
 
     void Update()
     {
@@ -129,8 +153,6 @@ namespace LD52
       Vector3 directionToNextTarget = (nextTarget - transform.position).normalized;
       Debug.DrawRay(transform.position, directionToNextTarget, Color.cyan, 0.01f);
 
-      CheckForRipeApple(directionToNextTarget);
-
       Vector3 newPos = transform.position + directionToNextTarget * speed * Time.deltaTime;
 
       float angle = Vector3.SignedAngle(Vector3.left, directionToNextTarget, Vector3.forward);
@@ -149,12 +171,30 @@ namespace LD52
       {
         currentBrainState = WormBrainState.HasDestination;
       }
+
+      CheckForRipeApple(directionToNextTarget);
     }
 
     void CheckForRipeApple(Vector3 currentDir)
     {
       var lookDir = Quaternion.AngleAxis(currentDir.x < 0 ? 45 : -45, Vector3.forward) * currentDir;
       Debug.DrawRay(transform.position, lookDir, Color.magenta, 0.01f);
+
+      RaycastHit2D hit = Physics2D.Raycast(transform.position, lookDir, ripeAppleCheckDistance, ripeAppleLayerMask);
+
+      if (hit)
+      {
+        targetChompApple = hit.rigidbody.gameObject.GetComponent<Apple>();
+        currentBrainState = WormBrainState.HasReachedRipeApple;
+        animator.Play("Chomping");
+      }
+    }
+
+    void HandleChompFinished()
+    {
+      bool didChomp = targetChompApple.Chomp();
+      animator.Play("Inching");
+      currentBrainState = WormBrainState.NeedsDestination;
     }
   }
 }

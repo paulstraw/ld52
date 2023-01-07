@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2554675295696208164}
   - component: {fileID: 6275465513099403742}
+  - component: {fileID: 8395029424821187399}
+  - component: {fileID: 894620190267338859}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -129,3 +131,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a199d4640c5f44990b800308704e068e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ripeAppleLayer: 10
+  initialGrowthRate: 2
+  growthStageSprites:
+  - {fileID: -961448763, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
+  - {fileID: -1525733076, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
+  - {fileID: -1417016725, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
+  - {fileID: -811423561, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
+  spriteRenderer: {fileID: 8778964915203969358}
+  rb: {fileID: 894620190267338859}
+--- !u!58 &8395029424821187399
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2982025032033458495}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06, y: -0.37}
+  serializedVersion: 2
+  m_Radius: 0.23
+--- !u!50 &894620190267338859
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2982025032033458495}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

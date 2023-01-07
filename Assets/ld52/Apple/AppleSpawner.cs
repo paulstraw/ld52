@@ -18,6 +18,9 @@ namespace LD52
     [SerializeField]
     Transform appleSpawnPointsParent;
 
+    [SerializeField]
+    int initialAppleCount;
+
 
     List<Transform> appleSpawnPoints = new List<Transform>();
 
@@ -32,6 +35,11 @@ namespace LD52
       foreach (Transform transform in appleSpawnPointsParent)
       {
         appleSpawnPoints.Add(transform);
+      }
+
+      for (int i = 0; i < initialAppleCount; i++)
+      {
+        SpawnApple();
       }
     }
 
@@ -49,6 +57,11 @@ namespace LD52
       if (now - lastSpawnTime < spawnDelay) return;
       lastSpawnTime = now;
 
+      SpawnApple();
+    }
+
+    void SpawnApple()
+    {
       int spawnPointIndex = -1;
       while (spawnPointIndex == -1)
       {
@@ -59,7 +72,6 @@ namespace LD52
           spawnPointIndex = -1;
         }
       }
-
 
       Transform spawnPoint = appleSpawnPoints[spawnPointIndex];
 
