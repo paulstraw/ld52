@@ -26,8 +26,11 @@ namespace LD52
 
     ConstantRotation constantRotation;
 
+    AudioSource audioSource;
+
     void Start()
     {
+      audioSource = GetComponent<AudioSource>();
       constantRotation = GetComponent<ConstantRotation>();
       AttachToHomeBase();
     }
@@ -50,6 +53,7 @@ namespace LD52
       constantRotation.rotationSpeed = Vector3.zero;
       transform.SetParent(homeBase);
       transform.localPosition = Vector3.zero;
+      audioSource.Stop();
     }
 
     void MoveToTarget()
@@ -83,6 +87,8 @@ namespace LD52
     public void Throw(Vector3 newTarget)
     {
       if (currentState != BoomerangState.Idle) return;
+
+      audioSource.Play();
 
       target = newTarget;
       currentState = BoomerangState.MovingToTarget;

@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/ld52/GameUI/ScoreboardStyle.uss?fileID=7433441132597879392&amp;guid=9ba7b9af3e04449deb29ce81a0e21017&amp;type=3#ScoreboardStyle" />
+    <ui:VisualElement name="scoreboard-wrapper" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: center; justify-content: center;">
+        <ui:VisualElement name="scoreboard">
+            <ui:Label tabindex="-1" text="Game over" display-tooltip-when-elided="true" name="game-over" />
+            <ui:VisualElement name="results">
+                <ui:VisualElement class="results-row">
+                    <ui:Label tabindex="-1" text="Apples harvested" display-tooltip-when-elided="true" class="results-label" />
+                    <ui:Label tabindex="-1" text="42&#x9;" display-tooltip-when-elided="true" class="results-value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="results-row">
+                    <ui:Label tabindex="-1" text="Harvest duration" display-tooltip-when-elided="true" class="results-label" />
+                    <ui:Label tabindex="-1" text="1:05.917&#x9;" display-tooltip-when-elided="true" class="results-value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="cta-wrapper">
+                <ui:Button text="Try again" display-tooltip-when-elided="true" name="try-again" />
+                <ui:Button text="Rate on ldjam.com" display-tooltip-when-elided="true" name="rate-on-ldjam" style="background-color: rgb(236, 85, 51);" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Thanks for playing!" display-tooltip-when-elided="true" name="thanks" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

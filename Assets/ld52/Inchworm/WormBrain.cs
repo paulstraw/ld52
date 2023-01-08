@@ -51,6 +51,11 @@ namespace LD52
     [SerializeField]
     InchwormAnimationEventProxy animationEventProxy;
 
+    [SerializeField]
+    List<AudioClip> chompClips;
+
+    AudioSource audioSource;
+
     Vector3 destination;
 
     Vector3 nextTarget;
@@ -63,6 +68,8 @@ namespace LD52
 
     void Start()
     {
+      audioSource = GetComponent<AudioSource>();
+
       animationEventProxy.OnChompFinished += HandleChompFinished;
     }
 
@@ -197,7 +204,13 @@ namespace LD52
 
     void HandleChompFinished()
     {
-      targetChompApple.Chomp();
+      bool didChomp = targetChompApple.Chomp();
+
+      if (didChomp)
+      {
+        audioSource.PlayOneShot(chompClips[UnityEngine.Random.Range(0, chompClips.Count)]);
+      }
+
       animator.Play("Inching");
       currentBrainState = WormBrainState.NeedsDestination;
     }

@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#scoreboard-wrapper {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+#scoreboard {
+    border-radius: 3px;
+    width: 180px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(65, 65, 65);
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#game-over {
+    -unity-text-align: upper-center;
+    font-size: 10px;
+    -unity-font-style: bold;
+    margin-bottom: -4px;
+}
+
+#thanks {
+    -unity-text-align: upper-center;
+    font-size: 8px;
+}
+
+Button {
+    font-size: 8px;
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgb(103, 103, 103);
+}
+
+#cta-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+.results-row {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 8px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.results-label {
+    color: rgba(75, 75, 75, 255);
+}
+
+.results-value {
+    -unity-font-style: bold;
+}
+
+#results {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
