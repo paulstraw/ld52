@@ -43,3 +43,4 @@ sysinfo.txt
 *.undo
 *.logicx/*/Autosave/
 /log.txt
+/ld52-web/build.zip
