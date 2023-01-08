@@ -27,6 +27,9 @@ namespace LD52
     [SerializeField]
     AudioClip gameOverClip;
 
+    Label durationLabel;
+    Label applesHarvestedLabel;
+
     void Start()
     {
       startTime = Time.time;
@@ -37,6 +40,8 @@ namespace LD52
       var rootEl = uiDocument.rootVisualElement;
       tryAgainButton = rootEl.Query<Button>("try-again");
       rateOnLDJamButton = rootEl.Query<Button>("rate-on-ldjam");
+      durationLabel = rootEl.Query<Label>("duration-label");
+      applesHarvestedLabel = rootEl.Query<Label>("apples-harvested-label");
 
       tryAgainButton.RegisterCallback<ClickEvent>(HandleClickTryAgain);
       rateOnLDJamButton.RegisterCallback<ClickEvent>(HandleClickRateOnLDJam);
@@ -86,20 +91,25 @@ namespace LD52
 
       currentLives -= 1;
 
-      float duration = Time.time - startTime;
 
       if (currentLives == 0)
       {
-        isGameOver = true;
-
         this.Invoke(() =>
         {
           audioSource.PlayOneShot(gameOverClip);
-        }, 0.2f);
+        }, 0.25f);
 
+        isGameOver = true;
         UnityEngine.Cursor.visible = true;
 
-        // TODO: show scoreboard
+        float duration = Time.time - startTime;
+        int displayMinutes = Mathf.FloorToInt(duration / 60);
+        int displaySeconds = (int)(duration % 60);
+        int displayMilliseconds = (int)((duration - Mathf.FloorToInt(duration)) * 1000);
+        durationLabel.text = $"{displayMinutes.ToString().PadLeft(2, '0')}:{displaySeconds.ToString().PadLeft(2, '0')}.{displayMilliseconds.ToString().PadLeft(3, '0')}";
+
+        applesHarvestedLabel.text = score.ToString();
+
         uiDocument.enabled = true;
       }
     }

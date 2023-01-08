@@ -6,11 +6,11 @@
             <ui:VisualElement name="results">
                 <ui:VisualElement class="results-row">
                     <ui:Label tabindex="-1" text="Apples harvested" display-tooltip-when-elided="true" class="results-label" />
-                    <ui:Label tabindex="-1" text="42&#x9;" display-tooltip-when-elided="true" class="results-value" />
+                    <ui:Label tabindex="-1" text="42&#x9;" display-tooltip-when-elided="true" name="apples-harvested-label" class="results-value" />
                 </ui:VisualElement>
                 <ui:VisualElement class="results-row">
                     <ui:Label tabindex="-1" text="Harvest duration" display-tooltip-when-elided="true" class="results-label" />
-                    <ui:Label tabindex="-1" text="1:05.917&#x9;" display-tooltip-when-elided="true" class="results-value" />
+                    <ui:Label tabindex="-1" text="1:05.917&#x9;" display-tooltip-when-elided="true" name="duration-label" class="results-value" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="cta-wrapper">
