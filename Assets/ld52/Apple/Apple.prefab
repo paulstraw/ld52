@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a199d4640c5f44990b800308704e068e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ripeAppleLayer: 10
   chompedAppleLayer: 8
   cutAppleLayer: 9
@@ -143,7 +143,7 @@ MonoBehaviour:
   chompedSprite: {fileID: -778323248, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
   spriteRenderer: {fileID: 8778964915203969358}
   rb: {fileID: 894620190267338859}
-  cutForce: 5
+  cutForce: 4
 --- !u!58 &8395029424821187399
 CircleCollider2D:
   m_ObjectHideFlags: 0

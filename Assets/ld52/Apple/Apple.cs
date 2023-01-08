@@ -19,9 +19,6 @@ namespace LD52
     [SerializeField, Layer]
     int cutAppleLayer;
 
-    [SerializeField, Layer]
-    int appleCapturerLayer;
-
     [SerializeField]
     float initialGrowthRate;
 
