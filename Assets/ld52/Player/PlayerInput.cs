@@ -145,6 +145,45 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TitleScreen"",
+            ""id"": ""6e613f1e-f18a-42dd-9af0-ae55c1a0a960"",
+            ""actions"": [
+                {
+                    ""name"": ""Play"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8ff7e25-9c36-4dd0-9227-923972257b1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""938002b6-5506-44de-9f06-997f7d426481"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Play"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac3184ba-affc-4217-a1cc-d03b79443548"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Play"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -154,6 +193,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Truck_Drive = m_Truck.FindAction("Drive", throwIfNotFound: true);
         m_Truck_Look = m_Truck.FindAction("Look", throwIfNotFound: true);
         m_Truck_ThrowBoomerang = m_Truck.FindAction("ThrowBoomerang", throwIfNotFound: true);
+        // TitleScreen
+        m_TitleScreen = asset.FindActionMap("TitleScreen", throwIfNotFound: true);
+        m_TitleScreen_Play = m_TitleScreen.FindAction("Play", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -258,10 +300,47 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public TruckActions @Truck => new TruckActions(this);
+
+    // TitleScreen
+    private readonly InputActionMap m_TitleScreen;
+    private ITitleScreenActions m_TitleScreenActionsCallbackInterface;
+    private readonly InputAction m_TitleScreen_Play;
+    public struct TitleScreenActions
+    {
+        private @PlayerInput m_Wrapper;
+        public TitleScreenActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Play => m_Wrapper.m_TitleScreen_Play;
+        public InputActionMap Get() { return m_Wrapper.m_TitleScreen; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TitleScreenActions set) { return set.Get(); }
+        public void SetCallbacks(ITitleScreenActions instance)
+        {
+            if (m_Wrapper.m_TitleScreenActionsCallbackInterface != null)
+            {
+                @Play.started -= m_Wrapper.m_TitleScreenActionsCallbackInterface.OnPlay;
+                @Play.performed -= m_Wrapper.m_TitleScreenActionsCallbackInterface.OnPlay;
+                @Play.canceled -= m_Wrapper.m_TitleScreenActionsCallbackInterface.OnPlay;
+            }
+            m_Wrapper.m_TitleScreenActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Play.started += instance.OnPlay;
+                @Play.performed += instance.OnPlay;
+                @Play.canceled += instance.OnPlay;
+            }
+        }
+    }
+    public TitleScreenActions @TitleScreen => new TitleScreenActions(this);
     public interface ITruckActions
     {
         void OnDrive(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnThrowBoomerang(InputAction.CallbackContext context);
+    }
+    public interface ITitleScreenActions
+    {
+        void OnPlay(InputAction.CallbackContext context);
     }
 }

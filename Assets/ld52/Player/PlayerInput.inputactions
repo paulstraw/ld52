@@ -123,6 +123,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TitleScreen",
+            "id": "6e613f1e-f18a-42dd-9af0-ae55c1a0a960",
+            "actions": [
+                {
+                    "name": "Play",
+                    "type": "Button",
+                    "id": "a8ff7e25-9c36-4dd0-9227-923972257b1e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "938002b6-5506-44de-9f06-997f7d426481",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Play",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac3184ba-affc-4217-a1cc-d03b79443548",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Play",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

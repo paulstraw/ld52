@@ -22,7 +22,7 @@ namespace LD52
     void Start()
     {
       playerInput = new PlayerInput();
-      playerInput.Enable();
+      playerInput.Truck.Enable();
       mainCam = Camera.main;
     }
 
