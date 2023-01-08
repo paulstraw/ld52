@@ -17,6 +17,8 @@ namespace LD52
 
     Camera mainCam;
 
+    float throttle = 0;
+
     void Start()
     {
       playerInput = new PlayerInput();
@@ -36,7 +38,14 @@ namespace LD52
         boomerang.Throw(worldLook);
       }
 
-      truckMotor.Throttle = playerInput.Truck.Drive.ReadValue<float>();
+      if (playerInput.Truck.Drive.WasPressedThisFrame())
+      {
+        throttle = 0;
+      }
+
+      float throttleInput = playerInput.Truck.Drive.ReadValue<float>();
+
+      truckMotor.Throttle = Mathf.SmoothDamp(truckMotor.Throttle, throttleInput, ref throttle, 0.05f);
     }
   }
 }
