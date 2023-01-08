@@ -45,7 +45,7 @@ namespace LD52
 
       float throttleInput = playerInput.Truck.Drive.ReadValue<float>();
 
-      truckMotor.Throttle = Mathf.SmoothDamp(truckMotor.Throttle, throttleInput, ref throttle, 0.05f);
+      truckMotor.Throttle = Mathf.SmoothDamp(truckMotor.Throttle, throttleInput, ref throttle, 0.02f);
     }
   }
 }

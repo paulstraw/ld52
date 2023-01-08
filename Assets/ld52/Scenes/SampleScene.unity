@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb194bac879740d9920a7fcbdd12220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1600
+  speed: 1500
   frontWheel: {fileID: 1569728874}
   rearWheel: {fileID: 609103591}
 --- !u!70 &74823302
@@ -820,7 +820,7 @@ WheelJoint2D:
   m_ConnectedAnchor: {x: -1.46, y: -0.55999994}
   m_Suspension:
     m_DampingRatio: 0.5
-    m_Frequency: 15
+    m_Frequency: 20
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
@@ -1448,6 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500554011}
+  - component: {fileID: 1500554012}
   m_Layer: 0
   m_Name: InfoSpawnPoint
   m_TagString: Untagged
@@ -1463,13 +1464,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500554010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: 1.79, z: 0}
+  m_LocalPosition: {x: -1.2, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 74823298}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500554012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500554010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f306e395e826143a7befca20d962b6fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capturedChompedPrefab: {fileID: 6825187048257980255, guid: ca29a37c4002341f085115bac0583ace, type: 3}
+  capturedCutPrefab: {fileID: 203605725910762426, guid: 5eb38f8b47481409c8d039feb4529b77, type: 3}
+  infoSpawnPoint: {fileID: 1500554011}
 --- !u!1 &1549480901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1570,7 @@ WheelJoint2D:
   m_ConnectedAnchor: {x: 1.47, y: -0.55999994}
   m_Suspension:
     m_DampingRatio: 0.5
-    m_Frequency: 15
+    m_Frequency: 20
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
