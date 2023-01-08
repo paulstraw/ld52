@@ -25,6 +25,9 @@ namespace LD52
     [SerializeField]
     Rigidbody2D rb;
 
+    [SerializeField]
+    float cutForce;
+
     int currentGrowthStage = 0;
 
     float lastGrowthAt;
@@ -81,6 +84,8 @@ namespace LD52
       hasBeenChomped = true;
       OnDisconnected?.Invoke(this);
 
+      spriteRenderer.sortingOrder = 9;
+
       rb.bodyType = RigidbodyType2D.Dynamic;
       rb.AddTorque(Random.Range(-20f, 20f));
       rb.AddForce(
@@ -93,6 +98,28 @@ namespace LD52
 
       gameObject.layer = initialLayer;
       spriteRenderer.sprite = chompedSprite;
+
+      return true;
+    }
+
+    public bool Cut(Vector3 cutterPosition)
+    {
+      if (hasBeenChomped || hasBeenCut) return false;
+      hasBeenCut = true;
+      OnDisconnected?.Invoke(this);
+
+      spriteRenderer.sortingOrder = 9;
+
+      Vector3 cutDirection = (transform.position - cutterPosition).normalized;
+
+      rb.bodyType = RigidbodyType2D.Dynamic;
+      rb.AddTorque(Random.Range(-20f, 20f));
+      rb.AddForce(
+        cutDirection * cutForce,
+        ForceMode2D.Impulse
+      );
+
+      gameObject.layer = initialLayer; // TODO:
 
       return true;
     }

@@ -7,6 +7,9 @@ namespace LD52
     [SerializeField]
     Transform leafPeeker;
 
+    [SerializeField]
+    Boomerang boomerang;
+
     PlayerInput playerInput;
 
     Camera mainCam;
@@ -24,6 +27,11 @@ namespace LD52
       Vector3 worldLook = mainCam.ScreenToWorldPoint(screenLook);
       worldLook.z = 0;
       leafPeeker.position = worldLook;
+
+      if (playerInput.Truck.ThrowBoomerang.WasPressedThisFrame())
+      {
+        boomerang.Throw(worldLook);
+      }
     }
   }
 }
