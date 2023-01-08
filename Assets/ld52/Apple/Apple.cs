@@ -37,6 +37,9 @@ namespace LD52
     [SerializeField]
     float cutForce;
 
+    [SerializeField]
+    List<AudioClip> cutClips;
+
     int currentGrowthStage = 0;
 
     float lastGrowthAt;
@@ -51,6 +54,8 @@ namespace LD52
 
     bool isSplatted = false;
 
+    AudioSource audioSource;
+
     public bool IsRipe
     {
       get;
@@ -59,6 +64,8 @@ namespace LD52
 
     void Start()
     {
+      audioSource = GetComponent<AudioSource>();
+
       lastGrowthAt = Time.time;
       growthRate = initialGrowthRate * Random.Range(0.75f, 1.25f);
       UpdateSprite();
@@ -117,6 +124,8 @@ namespace LD52
       if (hasBeenChomped || hasBeenCut) return false;
       hasBeenCut = true;
       OnDisconnected?.Invoke(this);
+
+      audioSource.PlayOneShot(cutClips[Random.Range(0, cutClips.Count)]);
 
       spriteRenderer.sortingOrder = 9;
 
