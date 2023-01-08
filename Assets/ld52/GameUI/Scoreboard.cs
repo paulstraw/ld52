@@ -37,15 +37,6 @@ namespace LD52
       uiDocument = GetComponent<UIDocument>();
       audioSource = GetComponent<AudioSource>();
 
-      var rootEl = uiDocument.rootVisualElement;
-      tryAgainButton = rootEl.Query<Button>("try-again");
-      rateOnLDJamButton = rootEl.Query<Button>("rate-on-ldjam");
-      durationLabel = rootEl.Query<Label>("duration-label");
-      applesHarvestedLabel = rootEl.Query<Label>("apples-harvested-label");
-
-      tryAgainButton.RegisterCallback<ClickEvent>(HandleClickTryAgain);
-      rateOnLDJamButton.RegisterCallback<ClickEvent>(HandleClickRateOnLDJam);
-
       Apple.OnCapturedCutApple += HandleCapturedCutApple;
       Apple.OnCapturedChompedApple += HandleCapturedChompedApple;
 
@@ -63,9 +54,7 @@ namespace LD52
     {
       Apple.OnCapturedCutApple -= HandleCapturedCutApple;
       Apple.OnCapturedChompedApple -= HandleCapturedChompedApple;
-
-      tryAgainButton.UnregisterCallback<ClickEvent>(HandleClickTryAgain);
-      rateOnLDJamButton.UnregisterCallback<ClickEvent>(HandleClickRateOnLDJam);
+      Destroy(audioSource);
     }
 
     void HandleClickTryAgain(ClickEvent e)
@@ -99,6 +88,17 @@ namespace LD52
           audioSource.PlayOneShot(gameOverClip);
         }, 0.25f);
 
+        uiDocument.enabled = true;
+
+        var rootEl = uiDocument.rootVisualElement;
+        tryAgainButton = rootEl.Query<Button>("try-again");
+        rateOnLDJamButton = rootEl.Query<Button>("rate-on-ldjam");
+        durationLabel = rootEl.Query<Label>("duration-label");
+        applesHarvestedLabel = rootEl.Query<Label>("apples-harvested-label");
+
+        tryAgainButton.RegisterCallback<ClickEvent>(HandleClickTryAgain);
+        rateOnLDJamButton.RegisterCallback<ClickEvent>(HandleClickRateOnLDJam);
+
         isGameOver = true;
         UnityEngine.Cursor.visible = true;
 
@@ -109,8 +109,6 @@ namespace LD52
         durationLabel.text = $"{displayMinutes.ToString().PadLeft(2, '0')}:{displaySeconds.ToString().PadLeft(2, '0')}.{displayMilliseconds.ToString().PadLeft(3, '0')}";
 
         applesHarvestedLabel.text = score.ToString();
-
-        uiDocument.enabled = true;
       }
     }
   }

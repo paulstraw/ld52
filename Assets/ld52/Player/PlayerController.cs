@@ -26,6 +26,11 @@ namespace LD52
       mainCam = Camera.main;
     }
 
+    void OnDestroy()
+    {
+      playerInput.Truck.Disable();
+    }
+
     void Update()
     {
       Vector2 screenLook = playerInput.Truck.Look.ReadValue<Vector2>();

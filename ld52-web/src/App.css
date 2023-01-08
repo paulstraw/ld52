@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(17, 18, 19);
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.loading-text {
+  display: flex;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

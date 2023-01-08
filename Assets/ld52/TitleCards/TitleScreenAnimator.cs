@@ -33,11 +33,11 @@ namespace LD52
       this.Invoke(() =>
       {
         ludumDare.DOFade(1, 0.8f);
-      }, 1.5f);
+      }, 1.7f);
       this.Invoke(() =>
       {
         paulstrawPresents.DOFade(1, 0.9f);
-      }, 3f);
+      }, 3.2f);
 
       this.Invoke(HideCard1, 6f);
     }
