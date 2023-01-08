@@ -5,10 +5,22 @@ namespace LD52
 {
   public class Apple : MonoBehaviour
   {
+    public static event System.Action OnCapturedCutApple;
+    public static event System.Action OnCapturedChompedApple;
+
     public event System.Action<Apple> OnDisconnected;
 
     [SerializeField, Layer]
     int ripeAppleLayer;
+
+    [SerializeField, Layer]
+    int chompedAppleLayer;
+
+    [SerializeField, Layer]
+    int cutAppleLayer;
+
+    [SerializeField, Layer]
+    int appleCapturerLayer;
 
     [SerializeField]
     float initialGrowthRate;
@@ -38,7 +50,9 @@ namespace LD52
 
     bool hasBeenCut = false;
 
-    int initialLayer;
+    bool isCaptured = false;
+
+    bool isSplatted = false;
 
     public bool IsRipe
     {
@@ -50,7 +64,6 @@ namespace LD52
     {
       lastGrowthAt = Time.time;
       growthRate = initialGrowthRate * Random.Range(0.75f, 1.25f);
-      initialLayer = gameObject.layer;
       UpdateSprite();
     }
 
@@ -96,7 +109,7 @@ namespace LD52
         ForceMode2D.Impulse
       );
 
-      gameObject.layer = initialLayer;
+      gameObject.layer = chompedAppleLayer;
       spriteRenderer.sprite = chompedSprite;
 
       return true;
@@ -119,9 +132,51 @@ namespace LD52
         ForceMode2D.Impulse
       );
 
-      gameObject.layer = initialLayer; // TODO:
+      gameObject.layer = cutAppleLayer;
 
       return true;
+    }
+
+    public void Capture(Transform newParent)
+    {
+      if (isCaptured || isSplatted) return;
+      isCaptured = true;
+
+      rb.velocity = Vector2.zero;
+      rb.angularVelocity = 0;
+      rb.gravityScale = 0;
+
+      transform.parent = newParent;
+
+      Destroy(rb);
+      Destroy(GetComponent<Collider2D>());
+
+      if (hasBeenChomped)
+      {
+        OnCapturedChompedApple?.Invoke();
+      }
+      else if (hasBeenCut)
+      {
+        OnCapturedCutApple?.Invoke();
+      }
+    }
+
+    public void Splat()
+    {
+      if (isCaptured || isSplatted) return;
+      isSplatted = true;
+
+      rb.velocity = Vector2.zero;
+      rb.angularVelocity = 0;
+      rb.gravityScale = 0;
+
+      Destroy(rb);
+      Destroy(GetComponent<Collider2D>());
+
+      this.Invoke(() =>
+      {
+        Destroy(gameObject);
+      }, 60f);
     }
   }
 }

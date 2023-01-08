@@ -10,6 +10,9 @@ namespace LD52
     [SerializeField]
     Boomerang boomerang;
 
+    [SerializeField]
+    TruckMotor truckMotor;
+
     PlayerInput playerInput;
 
     Camera mainCam;
@@ -32,6 +35,8 @@ namespace LD52
       {
         boomerang.Throw(worldLook);
       }
+
+      truckMotor.Throttle = playerInput.Truck.Drive.ReadValue<float>();
     }
   }
 }

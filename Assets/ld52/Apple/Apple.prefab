@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ripeAppleLayer: 10
+  chompedAppleLayer: 8
+  cutAppleLayer: 9
   initialGrowthRate: 1.2
   growthStageSprites:
   - {fileID: -961448763, guid: 9c23ba7d069ee48b8a321b920e86be56, type: 3}
