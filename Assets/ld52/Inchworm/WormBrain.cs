@@ -131,7 +131,6 @@ namespace LD52
       Vector3 directionToDestination = (destination - transform.position).normalized;
       Vector3 idealNextTarget = transform.position + (directionToDestination * idealNextTargetDistance);
       Vector3 newNextTarget = Vector3.zero;
-      float bestMatchDistance = float.MaxValue;
 
       // Debug.DrawLine(transform.position, idealNextTarget, Color.red, 50.0f);
       Spline closestSpline = splineContainer.Splines[0];
@@ -198,7 +197,7 @@ namespace LD52
 
     void HandleChompFinished()
     {
-      bool didChomp = targetChompApple.Chomp();
+      targetChompApple.Chomp();
       animator.Play("Inching");
       currentBrainState = WormBrainState.NeedsDestination;
     }
