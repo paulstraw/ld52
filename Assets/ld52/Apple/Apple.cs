@@ -40,6 +40,12 @@ namespace LD52
     [SerializeField]
     List<AudioClip> cutClips;
 
+    [SerializeField]
+    AudioClip collectedCutClip;
+
+    [SerializeField]
+    AudioClip collectedChompedClip;
+
     int currentGrowthStage = 0;
 
     float lastGrowthAt;
@@ -159,10 +165,12 @@ namespace LD52
 
       if (hasBeenChomped)
       {
+        audioSource.PlayOneShot(collectedChompedClip);
         OnCapturedChompedApple?.Invoke();
       }
       else if (hasBeenCut)
       {
+        audioSource.PlayOneShot(collectedCutClip);
         OnCapturedCutApple?.Invoke();
       }
     }

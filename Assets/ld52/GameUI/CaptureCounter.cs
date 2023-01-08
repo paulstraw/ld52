@@ -5,8 +5,6 @@ namespace LD52
 {
   public class CaptureCounter : MonoBehaviour
   {
-    public event System.Action OnGameLost;
-
     int chompedAppleCount = 0;
 
     [SerializeField]

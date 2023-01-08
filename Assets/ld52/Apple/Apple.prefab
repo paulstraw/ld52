@@ -152,6 +152,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5f5d16d6e19148d4a96c80b47d922f6, type: 3}
   - {fileID: 8300000, guid: ea3f7a6686d7c45c39058d1baa8978fa, type: 3}
   - {fileID: 8300000, guid: be3db3e566f7541d184690797b3b0fba, type: 3}
+  collectedCutClip: {fileID: 8300000, guid: b4b5dce0cf73747539e2cf165b1fa690, type: 3}
+  collectedChompedClip: {fileID: 8300000, guid: 7f9dd84c542b64362a27523c544a07c8, type: 3}
 --- !u!58 &8395029424821187399
 CircleCollider2D:
   m_ObjectHideFlags: 0
